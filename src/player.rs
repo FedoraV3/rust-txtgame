@@ -1,4 +1,3 @@
-use std::io;
 use rand::{thread_rng, Rng};
 
 use crate::enemy;
@@ -18,7 +17,7 @@ pub trait Actions {
 
 impl Actions for Player {
     fn attk(&self, enemy: &mut enemy::NewEnemy) -> i128 {
-        enemy.health -= self.damage;
+        enemy.health -= self.damage - enemy.resistance;
 
         self.damage
     }

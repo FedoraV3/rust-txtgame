@@ -1,10 +1,10 @@
 use rand::{thread_rng, Rng};
 
-pub struct EnemyWeapons(String);
+pub struct EnemyWeapon(String);
 
-impl EnemyWeapons { 
+impl EnemyWeapon { 
     pub fn new(name: &str) -> Self {
-        EnemyWeapons(name.to_string())
+        EnemyWeapon(name.to_string())
     }
 
     pub fn name(&self) -> &str {
@@ -16,7 +16,7 @@ pub struct NewEnemy {
     pub health: i128,
     pub damage: i128,
     pub resistance: i128,
-    pub weapon: EnemyWeapons,
+    pub weapon: EnemyWeapon,
 }
 
 
@@ -28,14 +28,14 @@ pub fn create_enemy(enemytype: &str) -> NewEnemy {
             health: rng.gen_range(30..100),
             damage: rng.gen_range(20..50),
             resistance: rng.gen_range(1..10),
-            weapon: EnemyWeapons::new("Pistol"),
+            weapon: EnemyWeapon::new("Pistol"),
         }
     } else if enemytype == "Assault" {
         NewEnemy {
             health: rng.gen_range(50..100),
             damage: rng.gen_range(15..45),
             resistance: rng.gen_range(5..15),
-            weapon: EnemyWeapons::new("Rifle"),
+            weapon: EnemyWeapon::new("Rifle"),
         }
     } else {
         panic!("Unknown enemy type: {}", enemytype);
